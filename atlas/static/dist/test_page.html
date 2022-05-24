@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="csrf-token" content="{{ csrf_token }}">
+    <title>Title</title>
+</head>
+<body>
+<button id="ai">get value</button>
+<button id="ai_2">button 2</button>
+<script
+  src="https://code.jquery.com/jquery-3.6.0.min.js"
+  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+  crossorigin="anonymous"></script>
+<script>
+    $(document).ready(function() {
+        $('#ai').click(function () {
+            $.post({
+                url: '{% url 'test_page' %}',
+                headers: {'X-CSRFToken': '{{ csrf_token }}'},
+                data: {
+                    'cmn_id': 1
+                }
+            }).done(function () {
+                alert('Успешно! ');
+            });
+        });
+        $('#ai_2').click(function (){
+            $.post({
+                url: '{% url 'test_page' %}',
+                headers: {'X-CSRFToken': '{{ csrf_token }}'},
+                data: {
+                    'cmn_id': 2
+                }
+            }).done(function (){
+                alert('Успешно! ');
+            });
+        });
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,82 @@
+{% load static %}
+{% block script %}
+<!-- Apex Chart -->
+<!--<script src="{% static 'js/pages/chart-apex.js' %}"></script>-->
+<script src="{% static 'js/plugins/apexcharts.min.js' %}"></script>
+<script>
+    'use strict';
+$(document).ready(function() {
+    setTimeout(function() {
+        $(function() {
+            var options = {
+                chart: {
+                    height: 500,
+                    type: 'line',
+                    zoom: {
+                        enabled: true
+                    }
+                },
+                dataLabels: {
+                    enabled: false,
+                    width: 1,
+                },
+                stroke: {
+                    curve: 'smooth',
+                },
+                colors: ["#800080","#FF0000","#FFFF00","#7267EF","#FFD700","\t#DA70D6"],
+                series: [{
+                    name: 'Ai1',
+                    data: [{% for obj_1 in obj1_cmn %}{{obj_1.ai1}},{%endfor%}]
+                }, {
+                    name: 'Ai2',
+                    data: [{% for obj_2 in obj1_cmn %}{{obj_2.ai2}},{%endfor%}]
+                }, {
+                    name: 'Ai3',
+                    data: [{% for obj_3 in obj1_cmn %}{{obj_3.ai3}},{%endfor%}]
+                }, {
+                    name: 'Ai4',
+                    data: [{% for obj_4 in obj1_cmn %}{{obj_4.ai4}},{%endfor%}]
+                }, {
+                    name: 'Ai5',
+                    data: [{% for obj_5 in obj1_cmn %}{{obj_5.ai5}},{%endfor%}]
+                }, {
+                    name: 'Ai6',
+                    data: [{% for obj_6 in obj1_cmn %}{{obj_6.ai6},{%endfor%}]
+                }, {
+                    name: 'Ai7',
+                    data: [{% for obj_7 in obj1_cmn %}{{obj_7.ai7}},{%endfor%}]
+                }, {
+                    name: 'Ai8',
+                    data: [{% for obj_8 in obj1_cmn %}{{obj_8.ai8}},{%endfor%}]
+                }, {
+                    name: 'Ai9',
+                    data: [{% for obj_9 in obj1_cmn %}{{obj_9.ai9}},{%endfor%}]
+                }, {
+                    name: 'Ai10',
+                    data: [{% for obj_10 in obj1_cmn %}{{obj_10.ai10}},{%endfor%}]
+                }],
+                title: {
+                    text: 'Product Trends by Month',
+                    align: 'left'
+                },
+                grid: {
+                    row: {
+                        colors: ['#f3f6ff', 'transparent'], // takes an array which will be repeated on columns
+                        opacity: 0.2
+                    },
+                },
+                xaxis: {
+                    categories: [...Array(240).keys()],
+                }
+            }
+
+            var chart = new ApexCharts(
+                document.querySelector("#line-chart-1"),
+                options
+            );
+            chart.render();
+        });
+            });
+});
+</script>
+{% endblock %}

@@ -1,0 +1,468 @@
+{% extends 'mainapp/base.html' %}
+{% load mainapp_extras %}
+{% load static %}
+{% block content %}
+{% if request.user.username == 'Atl' %}
+<div class="pc-container">
+    <div class="pcoded-content">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>Детальная информация по датчику</h5>
+                    </div>
+                    <div class="card-body" style="position: relative;">
+                        <div id="line-chart-1" style="min-height: 100%;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>Basic line chart</h5>
+                    </div>
+                    <div class="card-body" style="position: relative;">
+                        <div id="line-chart-2" style="min-height: 100%;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>Hover Table</h5>
+                        <span class="d-block m-t-5">use class <code>table-hover</code> inside table element</span>
+                    </div>
+                    <div class="card-body table-border-style">
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>idobj</th>
+                                        <th>idai</th>
+                                        <th>datain</th>
+                                        <th>mode</th>
+                                        <th>aimax</th>
+                                        <th>aimean</th>
+                                        <th>aimin</th>
+                                        <th>statmin</th>
+                                        <th>statmax</th>
+                                        <th>mlmin</th>
+                                        <th>mlmax</th>
+                                        <th>err</th>
+                                        <th>sts</th>
+                                        <th>dataout</th>
+                                        <th>datacheck</th>
+                                        <th>cmnt</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                {% for ai in obj1_ai %}
+                                    <tr>
+                                        <td>{{ai.idobj}}</td>
+                                        <td>{{ai.idai}}</td>
+                                        <td>{{ai.datain}}</td>
+                                        <td>{{ai.mode}}</td>
+                                        <td>{{ai.aimax}}</td>
+                                        <td>{{ai.aimean}}</td>
+                                        <td>{{ai.aimin}}</td>
+                                        <td>{{ai.statmin}}</td>
+                                        <td>{{ai.statmax}}</td>
+                                        <td>{{ai.mlmin}}</td>
+                                        <td>{{ai.mlmax}}</td>
+                                        <td>{{ai.err}}</td>
+                                        <td>{{ai.sts}}</td>
+                                        <td>{{ai.dataout}}</td>
+                                        <td>{{ai.datacheck}}</td>
+                                        <td>{{ai.cmnt}}</td>
+                                        <td><button id="line_chart_1" class="btn btn-outline-info" value="{{ai.id}}" >Квитировать</button></td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>Общие сведения по датчику</h5>
+                    </div>
+                    <div class="card-body table-border-style">
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>idobj</th>
+                                        <th>idai</th>
+                                        <th>datain</th>
+                                        <th>mode</th>
+                                        <th>aimax</th>
+                                        <th>aimean</th>
+                                        <th>aimin</th>
+                                        <th>statmin</th>
+                                        <th>statmax</th>
+                                        <th>mlmin</th>
+                                        <th>mlmax</th>
+                                        <th>err</th>
+                                        <th>sts</th>
+                                        <th>dataout</th>
+                                        <th>datacheck</th>
+                                        <th>cmnt</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                {% for ai in obj2_ai %}
+                                    <tr>
+                                        <td>{{ai.idobj}}</td>
+                                        <td>{{ai.idai}}</td>
+                                        <td>{{ai.datain}}</td>
+                                        <td>{{ai.mode}}</td>
+                                        <td>{{ai.aimax}}</td>
+                                        <td>{{ai.aimean}}</td>
+                                        <td>{{ai.aimin}}</td>
+                                        <td>{{ai.statmin}}</td>
+                                        <td>{{ai.statmax}}</td>
+                                        <td>{{ai.mlmin}}</td>
+                                        <td>{{ai.mlmax}}</td>
+                                        <td>{{ai.err}}</td>
+                                        <td>{{ai.sts}}</td>
+                                        <td>{{ai.dataout}}</td>
+                                        <td>{{ai.datacheck}}</td>
+                                        <td>{{ai.cmnt}}</td>
+                                        <td><button id="line_chart_2" class="btn btn-outline-info" value="{{ai.id}}" >Квитировать</button></td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    {% else %}
+<div class="pc-container">
+    <div class="pcoded-content">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>Детальная информация по датчику</h5>
+                    </div>
+                    <div class="card-body" style="position: relative;">
+                        <div id="line-chart-1" style="min-height: 100%;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>Общие сведения по датчику</h5>
+                    </div>
+                    <div class="card-body table-border-style">
+                        <form action="" method="POST">
+                            {% csrf_token %}
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>idobj</th>
+                                        <th>idai</th>
+                                        <th>datain</th>
+                                        <th>mode</th>
+                                        <th>aimax</th>
+                                        <th>aimean</th>
+                                        <th>aimin</th>
+                                        <th>statmin</th>
+                                        <th>statmax</th>
+                                        <th>mlmin</th>
+                                        <th>mlmax</th>
+                                        <th>err</th>
+                                        <th>sts</th>
+                                        <th>dataout</th>
+                                        <th>datacheck</th>
+                                        <th>cmnt</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                {% for ai in obj_ai %}
+                                    <tr>
+                                        <td>{{ai.idobj}}</td>
+                                        <td>{{ai.idai}}</td>
+                                        <td>{{ai.datain}}</td>
+                                        <td>{{ai.mode}}</td>
+                                        <td>{{ai.aimax}}</td>
+                                        <td>{{ai.aimean}}</td>
+                                        <td>{{ai.aimin}}</td>
+                                        <td>{{ai.statmin}}</td>
+                                        <td>{{ai.statmax}}</td>
+                                        <td>{{ai.mlmin}}</td>
+                                        <td>{{ai.mlmax}}</td>
+                                        <td>{{ai.err}}</td>
+                                        <td>{{ai.sts}}</td>
+                                        <td>{{ai.dataout}}</td>
+                                        <td>{{ai.datacheck}}</td>
+                                        <td>{{ai.cmnt}}</td>
+                                        <td><button type="submit" name="ai_id" class="btn  btn-outline-info" value="{{ai.id}}">Квитировать</button></td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                            </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    {% endif %}
+{% endblock %}
+{% block script %}
+    {% if request.user.username == 'Atl' %}
+<!-- Apex Chart -->
+<!--<script src="{% static 'js/pages/chart-apex.js' %}"></script>-->
+<script src="{% static 'js/plugins/apexcharts.min.js' %}"></script>
+<script>
+    'use strict';
+$(document).ready(function() {
+    setTimeout(function() {
+        $(function() {
+            var options = {
+                chart: {
+                    events: {
+                        beforeZoom: function (ctx){
+                            ctx.w.config.xaxis.range = undefined
+                        }
+                    },
+                    height: 800,
+                    type: 'line',
+                    zoom: {
+                        enabled: true,
+                    }
+                },
+                dataLabels: {
+                    enabled: false,
+                    width: 1,
+                },
+                stroke: {
+                    width: 1.5,
+                    curve: ['stepline','smooth','smooth','smooth','smooth','smooth','stepline'],
+                },
+                colors: ["#800080","#0000CD","#DA70D6","#FF00FF","#BC8F8F","#F4A460","#FF0000"],
+                series: [{
+                    name: 'Mode',
+                    data: [{% for obj_2 in ai_1 %}{{obj_2.mode}},{%endfor%}]
+                }, {
+                    name: 'Aimean',
+                    data: [{% for obj_3 in ai_1 %}{{obj_3.aimean}},{%endfor%}]
+                },{
+                    name: 'statmean',
+                    data: [{% for obj_4 in ai_1 %}{{obj_4.statmin}},{%endfor%}]
+                }, {
+                    name: 'statmax',
+                    data: [{% for obj_5 in ai_1 %}{{obj_5.statmax}},{%endfor%}]
+                }, {
+                    name: 'mlmin',
+                    data: [{% for obj_6 in ai_1 %}{{obj_6.mlmin}},{%endfor%}]
+                }, {
+                    name: 'mlmax',
+                    data: [{% for obj_7 in ai_1 %}{{obj_7.mlmax}},{%endfor%}]
+                }, {
+                    name: 'err',
+                    data: [{% for obj_8 in ai_1 %}{{obj_8.err}},{%endfor%}]
+                }],
+                title: {
+                    text: 'График датчика по первому объекту',
+                    align: 'left'
+                },
+                grid: {
+                    row: {
+                        colors: ['#F3F6FF', 'transparent'], // takes an array which will be repeated on columns
+                        opacity: 0.2
+                    },
+                },
+                xaxis: {
+                    range: 240,
+                    // categories: [{% for obj_1 in ai %}{{ obj_1.datain|to_string}},{% endfor %}],
+                    categories: [{% for obj_1 in ai_1 %}"{{obj_1.datain}}",{% endfor %}]
+                }
+            }
+
+            var chart = new ApexCharts(
+                document.querySelector("#line-chart-1"),
+                options
+            );
+            chart.render();
+        });
+        $(function() {
+            var options = {
+                chart: {
+                    height: 800,
+                    type: 'line',
+                    zoom: {
+                        enabled: true,
+                    }
+                },
+                dataLabels: {
+                    enabled: false,
+                    width: 1,
+                },
+                stroke: {
+                    width: 1.5,
+                    curve: ['stepline','smooth','smooth','smooth','smooth','smooth','stepline'],
+                },
+                colors: ["#800080","#0000CD","#DA70D6","#FF00FF","#BC8F8F","#F4A460","#FF0000"],
+                series: [{
+                    name: 'Mode',
+                    data: [{% for obj_2 in ai_2 %}{{obj_2.mode}},{%endfor%}]
+                }, {
+                    name: 'Aimean',
+                    data: [{% for obj_3 in ai_2 %}{{obj_3.aimean}},{%endfor%}]
+                },{
+                    name: 'statmean',
+                    data: [{% for obj_4 in ai_2 %}{{obj_4.statmin}},{%endfor%}]
+                }, {
+                    name: 'statmax',
+                    data: [{% for obj_5 in ai_2 %}{{obj_5.statmax}},{%endfor%}]
+                }, {
+                    name: 'mlmin',
+                    data: [{% for obj_6 in ai_2 %}{{obj_6.mlmin}},{%endfor%}]
+                }, {
+                    name: 'mlmax',
+                    data: [{% for obj_7 in ai_2 %}{{obj_7.mlmax}},{%endfor%}]
+                }, {
+                    name: 'err',
+                    data: [{% for obj_8 in ai_2 %}{{obj_8.err}},{%endfor%}]
+                }],
+                title: {
+                    text: 'График датчика по второму объекту',
+                    align: 'left'
+                },
+                grid: {
+                    row: {
+                        colors: ['#F3F6FF', 'transparent'], // takes an array which will be repeated on columns
+                        opacity: 0.2
+                    },
+                },
+                xaxis: {
+                    // categories: [{% for obj_1 in ai %}{{ obj_1.datain|to_string}},{% endfor %}],
+                    categories: [{% for obj_1 in ai_2 %}"{{obj_2.datain}}",{% endfor %}]
+                }
+            }
+
+            var chart = new ApexCharts(
+                document.querySelector("#line-chart-2"),
+                options
+            );
+            chart.render();
+        });
+            });
+    $('#line_chart_1').click(function () {
+                $.post({
+                url: '',
+                headers: {'X-CSRFToken': '{{ csrf_token }}'},
+                data: {
+                    'cmn_id': 1,
+                    'ai_id':$(this).val()
+                }
+            })
+                })
+
+    $('#line_chart_2').click(function () {
+                $.post({
+                url: '',
+                headers: {'X-CSRFToken': '{{ csrf_token }}'},
+                data: {
+                    'cmn_id': 2,
+                    'ai_id':$(this).val()
+                }
+            })
+                })
+});
+</script>
+
+{% else %}
+<!-- Apex Chart -->
+<!--<script src="{% static 'js/pages/chart-apex.js' %}"></script>-->
+<script src="{% static 'js/plugins/apexcharts.min.js' %}"></script>
+<script>
+    'use strict';
+$(document).ready(function() {
+    setTimeout(function() {
+        $(function() {
+            var options = {
+                chart: {
+                    height: 800,
+                    type: 'line',
+                    zoom: {
+                        enabled: true,
+                    }
+                },
+                dataLabels: {
+                    enabled: false,
+                    width: 1,
+                },
+                stroke: {
+                    width: 1.5,
+                    curve: ['stepline','smooth','smooth','smooth','smooth','smooth','stepline'],
+                },
+                colors: ["#800080","#0000CD","#DA70D6","#FF00FF","#BC8F8F","#F4A460","#FF0000"],
+                series: [{
+                    name: 'Mode',
+                    data: [{% for obj_2 in ai %}{{obj_2.mode}},{%endfor%}]
+                }, {
+                    name: 'Aimean',
+                    data: [{% for obj_3 in ai %}{{obj_3.aimean}},{%endfor%}]
+                },{
+                    name: 'statmean',
+                    data: [{% for obj_4 in ai %}{{obj_4.statmin}},{%endfor%}]
+                }, {
+                    name: 'statmax',
+                    data: [{% for obj_5 in ai %}{{obj_5.statmax}},{%endfor%}]
+                }, {
+                    name: 'mlmin',
+                    data: [{% for obj_6 in ai %}{{obj_6.mlmin}},{%endfor%}]
+                }, {
+                    name: 'mlmax',
+                    data: [{% for obj_7 in ai %}{{obj_7.mlmax}},{%endfor%}]
+                }, {
+                    name: 'err',
+                    data: [{% for obj_8 in ai %}{{obj_8.err}},{%endfor%}]
+                }],
+                title: {
+                    text: 'График датчика по объекту',
+                    align: 'left'
+                },
+                grid: {
+                    row: {
+                        colors: ['#F3F6FF', 'transparent'], // takes an array which will be repeated on columns
+                        opacity: 0.2
+                    },
+                },
+                xaxis: {
+                    // categories: [{% for obj_1 in ai %}{{ obj_1.datain|to_string}},{% endfor %}],
+                    categories: [{% for obj_1 in ai %}"{{obj_1.datain}}",{% endfor %}]
+                }
+            }
+
+            var chart = new ApexCharts(
+                document.querySelector("#line-chart-1"),
+                options
+            );
+            chart.render();
+        });
+            });
+});
+</script>
+    {% endif %}
+    {% endblock %}

@@ -1,0 +1,42 @@
+{% load static %}
+<div class="mr-auto pc-mob-drp">
+
+</div>
+<div class="ml-auto">
+	<ul class="list-unstyled">
+		<li class="dropdown pc-h-item">
+			<a class="pc-head-link dropdown-toggle arrow-none mr-0" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+				<i class="material-icons-two-tone">search</i>
+			</a>
+			<div class="dropdown-menu dropdown-menu-right pc-h-dropdown drp-search">
+				<form class="px-3">
+					<div class="form-group mb-0 d-flex align-items-center">
+						<i data-feather="search"></i>
+						<input type="search" class="form-control border-0 shadow-none" placeholder="Search here. . .">
+					</div>
+				</form>
+			</div>
+		</li>
+		<li class="dropdown pc-h-item">
+			<a class="pc-head-link dropdown-toggle arrow-none mr-0" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+				<img src="https://ui-avatars.com/api/?name={{ user.username|default:'Unauthorized' }}" alt="user-image" class="user-avtar">
+				<span>
+					<span class="user-name">{{ user.username|default:'Unauthorized' }}</span>
+				</span>
+			</a>
+			<div class="dropdown-menu dropdown-menu-right pc-h-dropdown">
+				{% if request.user.is_authenticated %}
+				<a href="{% url 'authapp:logout' %}" class="dropdown-item">
+					<i data-feather="log-out" class="material-icons-two-tone">chrome_reader_mode</i>
+					<span>Logout</span>
+				</a>
+				{% else %}
+				<a href="{% url 'authapp:login' %}" class="dropdown-item">
+					<i data-feather="log-in" class="material-icons-two-tone">chrome_reader_mode</i>
+					<span>Login</span>
+				</a>
+				{% endif %}
+			</div>
+		</li>
+	</ul>
+</div>

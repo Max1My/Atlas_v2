@@ -1,0 +1,21 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% include 'mainapp/layouts/head.html' %}
+    {% include 'mainapp/layouts/head-bottom-link.html' %}
+</head>
+{% include 'mainapp/layouts/layout-vertical.html' %}
+<!-- [ Main Content ] start -->
+{% block content %}
+{% endblock %}
+<!-- [ Main Content ] end -->
+{% include 'mainapp/layouts/footer.html' %}
+{% block script %}
+{% endblock %}
+<!-- custom-chart js -->
+<script src="{% static 'js/pages/dashboard-sale.js' %}"></script>
+</body>
+
+</html>

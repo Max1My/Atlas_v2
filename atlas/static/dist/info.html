@@ -1,0 +1,499 @@
+{% extends 'mainapp/base.html' %}
+{% load static %}
+{% load livereload_tags %}
+{% block content %}
+{% if request.user.username == 'Atl' %}
+<div class="pc-container">
+    <div class="pcoded-content">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>Obj1_Cmn</h5>
+                    </div>
+                    <div class="card-body" style="position: relative;">
+                        <div id="line-chart-1" style="min-height: 100%;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>Obj2_Cmn</h5>
+                    </div>
+                    <div class="card-body" style="position: relative;">
+                        <div id="line-chart-2" style="min-height: 100%;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>Obj1_Ai</h5>
+                    </div>
+                    <div class="card-body table-border-style">
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>idobj</th>
+                                        <th>idai</th>
+                                        <th>datain</th>
+                                        <th>mode</th>
+                                        <th>aimax</th>
+                                        <th>aimean</th>
+                                        <th>aimin</th>
+                                        <th>statmin</th>
+                                        <th>statmax</th>
+                                        <th>mlmin</th>
+                                        <th>mlmax</th>
+                                        <th>err</th>
+                                        <th>sts</th>
+                                        <th>dataout</th>
+                                        <th>datacheck</th>
+                                        <th>cmnt</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                {% for ai in obj1_ai %}
+                                    <tr>
+                                        <td>{{ai.idobj}}</td>
+                                        <td>{{ai.idai}}</td>
+                                        <td>{{ai.datain}}</td>
+                                        <td>{{ai.mode}}</td>
+                                        <td>{{ai.aimax}}</td>
+                                        <td>{{ai.aimean}}</td>
+                                        <td>{{ai.aimin}}</td>
+                                        <td>{{ai.statmin}}</td>
+                                        <td>{{ai.statmax}}</td>
+                                        <td>{{ai.mlmin}}</td>
+                                        <td>{{ai.mlmax}}</td>
+                                        <td>{{ai.err}}</td>
+                                        <td>{{ai.sts}}</td>
+                                        <td>{{ai.dataout}}</td>
+                                        <td>{{ai.datacheck}}</td>
+                                        <td>{{ai.cmnt}}</td>
+<!--                                        <td><button type="submit" name="ai_id" class="btn  btn-outline-info" value="{{ai.id}}">Квитировать</button></td>-->
+                                        <td><button id="line_chart_1" class="btn btn-outline-info" value="{{ai.id}}" >Квитировать</button></td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>Obj2_Ai</h5>
+                    </div>
+                    <div class="card-body table-border-style">
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>idobj</th>
+                                        <th>idai</th>
+                                        <th>datain</th>
+                                        <th>mode</th>
+                                        <th>aimax</th>
+                                        <th>aimean</th>
+                                        <th>aimin</th>
+                                        <th>statmin</th>
+                                        <th>statmax</th>
+                                        <th>mlmin</th>
+                                        <th>mlmax</th>
+                                        <th>err</th>
+                                        <th>sts</th>
+                                        <th>dataout</th>
+                                        <th>datacheck</th>
+                                        <th>cmnt</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                {% for ai in obj2_ai %}
+                                    <tr>
+                                        <td>{{ai.idobj}}</td>
+                                        <td>{{ai.idai}}</td>
+                                        <td>{{ai.datain}}</td>
+                                        <td>{{ai.mode}}</td>
+                                        <td>{{ai.aimax}}</td>
+                                        <td>{{ai.aimean}}</td>
+                                        <td>{{ai.aimin}}</td>
+                                        <td>{{ai.statmin}}</td>
+                                        <td>{{ai.statmax}}</td>
+                                        <td>{{ai.mlmin}}</td>
+                                        <td>{{ai.mlmax}}</td>
+                                        <td>{{ai.err}}</td>
+                                        <td>{{ai.sts}}</td>
+                                        <td>{{ai.dataout}}</td>
+                                        <td>{{ai.datacheck}}</td>
+                                        <td>{{ai.cmnt}}</td>
+                                        <td><button id="line_chart_2" class="btn  btn-outline-info" value="{{ai.id}}">Квитировать</button></td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+</div>
+        {% else %}
+        <div class="pc-container">
+    <div class="pcoded-content">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>Общая информация по всем датчикам</h5>
+                    </div>
+                    <div class="card-body" style="position: relative;">
+                        <div id="line-chart-1" style="min-height: 100%;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>Детальная информация по объектам</h5>
+                    </div>
+                    <div class="card-body table-border-style">
+                        <form action="" method="POST">
+                            {% csrf_token %}
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>idobj</th>
+                                        <th>idai</th>
+                                        <th>datain</th>
+                                        <th>mode</th>
+                                        <th>aimax</th>
+                                        <th>aimean</th>
+                                        <th>aimin</th>
+                                        <th>statmin</th>
+                                        <th>statmax</th>
+                                        <th>mlmin</th>
+                                        <th>mlmax</th>
+                                        <th>err</th>
+                                        <th>sts</th>
+                                        <th>dataout</th>
+                                        <th>datacheck</th>
+                                        <th>cmnt</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                {% for ai in obj_ai %}
+                                    <tr>
+                                        <td>{{ai.idobj}}</td>
+                                        <td>{{ai.idai}}</td>
+                                        <td>{{ai.datain}}</td>
+                                        <td>{{ai.mode}}</td>
+                                        <td>{{ai.aimax}}</td>
+                                        <td>{{ai.aimean}}</td>
+                                        <td>{{ai.aimin}}</td>
+                                        <td>{{ai.statmin}}</td>
+                                        <td>{{ai.statmax}}</td>
+                                        <td>{{ai.mlmin}}</td>
+                                        <td>{{ai.mlmax}}</td>
+                                        <td>{{ai.err}}</td>
+                                        <td>{{ai.sts}}</td>
+                                        <td>{{ai.dataout}}</td>
+                                        <td>{{ai.datacheck}}</td>
+                                        <td>{{ai.cmnt}}</td>
+                                        <td><button type="submit" name="ai_id" class="btn  btn-outline-info" value="{{ai.id}}">Квитировать</button></td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                            </form>
+                    </div>
+                </div>
+            </div>
+    </div>
+</div>
+            {% endif %}
+{% endblock %}
+{% block script %}
+            {% if request.user.username == 'Atl' %}
+<!-- Apex Chart -->
+<!--<script src="{% static 'js/pages/chart-apex.js' %}"></script>-->
+<script src="{% static 'js/plugins/apexcharts.min.js' %}"></script>
+<script>
+    'use strict';
+$(document).ready(function() {
+    setTimeout(function() {
+        $(function() {
+            var options = {
+                chart: {
+                    events: {
+                        beforeZoom: function (ctx){
+                            ctx.w.config.xaxis.range = undefined
+                        }
+                    },
+                    height: 800,
+                    type: 'line',
+                    zoom: {
+                        enabled: true,
+                    }
+                },
+                dataLabels: {
+                    enabled: false,
+                    width: 1,
+                },
+                stroke: {
+                    width: 1.5,
+                    curve: 'smooth',
+                },
+                colors: ["#800080","#FF0000","#FFFF00","#7267EF","#FFD700","\t#DA70D6"],
+                series: [{
+                    name: 'Ai1',
+                    data: [{% for obj_1 in obj1_cmn %}{{obj_1.ai1}},{%endfor%}]
+                }, {
+                    name: 'Ai2',
+                    data: [{% for obj_2 in obj1_cmn %}{{obj_2.ai2}},{%endfor%}]
+                }, {
+                    name: 'Ai3',
+                    data: [{% for obj_3 in obj1_cmn %}{{obj_3.ai3}},{%endfor%}]
+                }, {
+                    name: 'Ai4',
+                    data: [{% for obj_4 in obj1_cmn %}{{obj_4.ai4}},{%endfor%}]
+                }, {
+                    name: 'Ai5',
+                    data: [{% for obj_5 in obj1_cmn %}{{obj_5.ai5}},{%endfor%}]
+                }, {
+                    name: 'Ai6',
+                    data: [{% for obj_6 in obj1_cmn %}{{obj_6.ai6}},{%endfor%}]
+                }, {
+                    name: 'Ai7',
+                    data: [{% for obj_7 in obj1_cmn %}{{obj_7.ai7}},{%endfor%}]
+                }, {
+                    name: 'Ai8',
+                    data: [{% for obj_8 in obj1_cmn %}{{obj_8.ai8}},{%endfor%}]
+                }, {
+                    name: 'Ai9',
+                    data: [{% for obj_9 in obj1_cmn %}{{obj_9.ai9}},{%endfor%}]
+                }, {
+                    name: 'Ai10',
+                    data: [{% for obj_10 in obj1_cmn %}{{obj_10.ai10}},{%endfor%}]
+                }],
+                title: {
+                    text: 'Product Trends by Month',
+                    align: 'left'
+                },
+                grid: {
+                    row: {
+                        colors: ['#F3F6FF', 'transparent'], // takes an array which will be repeated on columns
+                        opacity: 0.2
+                    },
+                },
+                xaxis: {
+                    range: 240,
+                    categories: [{% for obj_11 in obj1_cmn%}{{obj_11.id}},{%endfor%}],
+                }
+            }
+
+            var chart = new ApexCharts(
+                document.querySelector("#line-chart-1"),
+                options
+            );
+            chart.render();
+        });
+        $(function() {
+            var options = {
+                chart: {
+                    events: {
+                        beforeZoom: function (ctx){
+                            ctx.w.config.xaxis.range = undefined
+                        }
+                    },
+                    height: 600,
+                    type: 'line',
+                    zoom: {
+                        enabled: true,
+                    }
+                },
+                dataLabels: {
+                    enabled: false,
+                    width: 1,
+                },
+                stroke: {
+                    width: 1.5,
+                    curve: 'smooth',
+                },
+                colors: ["#800080","#FF0000","#FFFF00","#7267EF","#FFD700","\t#DA70D6"],
+                series: [{
+                    name: 'Ai1',
+                    data: [{% for obj_1 in obj2_cmn %}{{obj_1.ai1}},{%endfor%}]
+                }, {
+                    name: 'Ai2',
+                    data: [{% for obj_2 in obj2_cmn %}{{obj_2.ai2}},{%endfor%}]
+                }, {
+                    name: 'Ai3',
+                    data: [{% for obj_3 in obj2_cmn %}{{obj_3.ai3}},{%endfor%}]
+                }, {
+                    name: 'Ai4',
+                    data: [{% for obj_4 in obj2_cmn %}{{obj_4.ai4}},{%endfor%}]
+                }, {
+                    name: 'Ai5',
+                    data: [{% for obj_5 in obj2_cmn %}{{obj_5.ai5}},{%endfor%}]
+                }, {
+                    name: 'Ai6',
+                    data: [{% for obj_6 in obj2_cmn %}{{obj_6.ai6}},{%endfor%}]
+                }, {
+                    name: 'Ai7',
+                    data: [{% for obj_7 in obj2_cmn %}{{obj_7.ai7}},{%endfor%}]
+                }, {
+                    name: 'Ai8',
+                    data: [{% for obj_8 in obj2_cmn %}{{obj_8.ai8}},{%endfor%}]
+                }, {
+                    name: 'Ai9',
+                    data: [{% for obj_9 in obj2_cmn %}{{obj_9.ai9}},{%endfor%}]
+                }, {
+                    name: 'Ai10',
+                    data: [{% for obj_10 in obj2_cmn %}{{obj_10.ai10}},{%endfor%}]
+                }],
+                title: {
+                    text: 'Product Trends by Month',
+                    align: 'left'
+                },
+                grid: {
+                    row: {
+                        colors: ['#F3F6FF', 'transparent'], // takes an array which will be repeated on columns
+                        opacity: 0.2
+                    },
+                },
+                xaxis: {
+                    range: 240,
+                    categories: [{% for obj_11 in obj2_cmn%}{{obj_11.id}},{%endfor%}],
+                }
+            }
+
+            var chart = new ApexCharts(
+                document.querySelector("#line-chart-2"),
+                options
+            );
+            chart.render();
+        });
+
+            });
+    $('#line_chart_1').click(function () {
+                $.post({
+                url: '{% url 'info' %}',
+                headers: {'X-CSRFToken': '{{ csrf_token }}'},
+                data: {
+                    'cmn_id': 1,
+                    'ai_id':$(this).val()
+                }
+            })
+                })
+
+    $('#line_chart_2').click(function () {
+                $.post({
+                url: '{% url 'info' %}',
+                headers: {'X-CSRFToken': '{{ csrf_token }}'},
+                data: {
+                    'cmn_id': 2,
+                    'ai_id':$(this).val()
+                }
+            })
+                })
+});
+</script>
+    {% else %}
+<!-- Apex Chart -->
+<!--<script src="{% static 'js/pages/chart-apex.js' %}"></script>-->
+<script src="{% static 'js/plugins/apexcharts.min.js' %}"></script>
+<script>
+    'use strict';
+$(document).ready(function() {
+    setTimeout(function() {
+        $(function() {
+            var options = {
+                chart: {
+                    height: 800,
+                    type: 'line',
+                    zoom: {
+                        enabled: true,
+                    }
+                },
+                dataLabels: {
+                    enabled: false,
+                    width: 1,
+                },
+                stroke: {
+                    width: 1.5,
+                    curve: 'smooth',
+                },
+                colors: ["#800080","#FF0000","#FFFF00","#7267EF","#FFD700","\t#DA70D6"],
+                series: [{
+                    name: 'Ai1',
+                    data: [{% for obj_1 in obj_cmn %}{{obj_1.ai1}},{%endfor%}]
+                }, {
+                    name: 'Ai2',
+                    data: [{% for obj_2 in obj_cmn %}{{obj_2.ai2}},{%endfor%}]
+                }, {
+                    name: 'Ai3',
+                    data: [{% for obj_3 in obj_cmn %}{{obj_3.ai3}},{%endfor%}]
+                }, {
+                    name: 'Ai4',
+                    data: [{% for obj_4 in obj_cmn %}{{obj_4.ai4}},{%endfor%}]
+                }, {
+                    name: 'Ai5',
+                    data: [{% for obj_5 in obj_cmn %}{{obj_5.ai5}},{%endfor%}]
+                }, {
+                    name: 'Ai6',
+                    data: [{% for obj_6 in obj_cmn %}{{obj_6.ai6}},{%endfor%}]
+                }, {
+                    name: 'Ai7',
+                    data: [{% for obj_7 in obj_cmn %}{{obj_7.ai7}},{%endfor%}]
+                }, {
+                    name: 'Ai8',
+                    data: [{% for obj_8 in obj_cmn %}{{obj_8.ai8}},{%endfor%}]
+                }, {
+                    name: 'Ai9',
+                    data: [{% for obj_9 in obj_cmn %}{{obj_9.ai9}},{%endfor%}]
+                }, {
+                    name: 'Ai10',
+                    data: [{% for obj_10 in obj_cmn %}{{obj_10.ai10}},{%endfor%}]
+                }],
+                title: {
+                    text: 'Product Trends by Month',
+                    align: 'left'
+                },
+                grid: {
+                    row: {
+                        colors: ['#F3F6FF', 'transparent'], // takes an array which will be repeated on columns
+                        opacity: 0.2
+                    },
+                },
+                xaxis: {
+                    categories: [{% for obj_11 in obj_cmn%}{{obj_11.id}},{%endfor%}],
+                }
+            }
+
+            var chart = new ApexCharts(
+                document.querySelector("#line-chart-1"),
+                options
+            );
+            chart.render();
+        });
+            });
+});
+</script>
+                {% endif %}
+{% endblock %}

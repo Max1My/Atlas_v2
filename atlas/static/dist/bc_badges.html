@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	{% load static %}
+	<title>DashboardKit Bootstrap 5 Admin Template</title>
+	<!-- HTML5 Shim and Respond.js IE11 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	<!--[if lt IE 11]>
+		<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+		<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+		<![endif]-->
+	<!-- Meta -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="description" content="DashboardKit is made using Bootstrap 5 design framework. Download the free admin template & use it for your project.">
+	<meta name="keywords" content="DashboardKit, Dashboard Kit, Dashboard UI Kit, Bootstrap 5, Admin Template, Admin Dashboard, CRM, CMS, Free Bootstrap Admin Template">
+	<meta name="author" content="DashboardKit ">
+
+
+	<!-- Favicon icon -->
+	<link rel="icon" href="{% static '/images/favicon.svg' %}" type="image/x-icon">
+
+	{% load static %}
+	<!-- font css -->
+	<link rel="stylesheet" href="{% static 'fonts/feather.css' %}">
+	<link rel="stylesheet" href="{% static 'fonts/fontawesome.css' %}">
+	<link rel="stylesheet" href="{% static 'fonts/material.css' %}">
+
+	<!-- vendor css -->
+	<link rel="stylesheet" href="{% static 'css/style.css' %}" id="main-style-link">
+
+</head>
+{% load static %}
+<body class="">
+	<!-- [ Pre-loader ] start -->
+	<div class="loader-bg">
+		<div class="loader-track">
+			<div class="loader-fill"></div>
+		</div>
+	</div>
+	<!-- [ Pre-loader ] End -->
+	<!-- [ Mobile header ] start -->
+	<div class="pc-mob-header pc-header">
+		<div class="pcm-logo">
+			<img src="{% static 'images/logo.svg' %}" alt="" class="logo logo-lg">
+		</div>
+		<div class="pcm-toolbar">
+			<a href="#!" class="pc-head-link" id="mobile-collapse">
+				<div class="hamburger hamburger--arrowturn">
+					<div class="hamburger-box">
+						<div class="hamburger-inner"></div>
+					</div>
+				</div>
+			</a>
+			<a href="#!" class="pc-head-link" id="headerdrp-collapse">
+				<i data-feather="align-right"></i>
+			</a>
+			<a href="#!" class="pc-head-link" id="header-collapse">
+				<i data-feather="more-vertical"></i>
+			</a>
+		</div>
+	</div>
+	<!-- [ Mobile header ] End -->
+
+	<!-- [ navigation menu ] start -->
+	<nav class="pc-sidebar ">
+		<div class="navbar-wrapper">
+			<div class="m-header">
+				<a href="index.html" class="b-brand">
+					<!-- ========   change your logo hear   ============ -->
+					<img src="{% static 'images/logo.svg' %}" alt="" class="logo logo-lg">
+					<img src="{% static 'images/logo-sm.svg' %}" alt="" class="logo logo-sm">
+				</a>
+			</div>
+			<div class="navbar-content">
+				<ul class="pc-navbar">
+					{% include './menu-list.html' %}
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<!-- [ navigation menu ] end -->
+	<!-- [ Header ] start -->
+	<header class="pc-header ">
+		<div class="header-wrapper">
+			{% include './header-content.html' %}
+		</div>
+	</header>
+	<!-- [ Header ] end -->
+
+<!-- [ Main Content ] start -->
+<div class="pc-container">
+	<div class="pcoded-content">
+		<!-- [ Main Content ] start -->
+		<div class="row mb-3">
+				<div class="col-md-8">
+					<h3>Badges</h3>
+					<p class="lead">Documentation and examples for badges, our small count and labeling component.</p>
+					<p class="f-w-500">Check out <a href="http://html.phoenixcoded.net/nextro-new/docs/index-bc-package.html#page-badge" target="_blank" class="badge bg-light-primary">Documentation</a></p>
+				</div>
+		</div>
+		<div class="row">
+			<!-- [ badge ] start -->
+			<div class="col-sm-12">
+				<div class="card">
+					<div class="card-header">
+						<h5>Basic Badges</h5>
+					</div>
+					<div class="card-body">
+						<h1>Example heading <span class="badge bg-secondary">New</span></h1>
+						<h2>Example heading <span class="badge bg-secondary">New</span></h2>
+						<h3>Example heading <span class="badge bg-secondary">New</span></h3>
+						<h4>Example heading <span class="badge bg-secondary">New</span></h4>
+						<h5>Example heading <span class="badge bg-secondary">New</span></h5>
+						<h6>Example heading <span class="badge bg-secondary">New</span></h6>
+					</div>
+				</div>
+				<div class="card btn-page">
+					<div class="card-header">
+						<h5>Button Badges</h5>
+					</div>
+					<div class="card-body">
+						<button type="button" class="btn  btn-primary">primary <span class="badge bg-secondary">4</span></button>
+						<button type="button" class="btn  btn-secondary">secondary <span class="badge bg-secondary">4</span></button>
+						<button type="button" class="btn  btn-success">success <span class="badge bg-secondary">4</span></button>
+						<button type="button" class="btn  btn-danger">danger <span class="badge bg-secondary">4</span></button>
+						<button type="button" class="btn  btn-warning">warning <span class="badge bg-secondary">4</span></button>
+						<button type="button" class="btn  btn-info">info <span class="badge bg-secondary">4</span></button>
+					</div>
+				</div>
+				<div class="card">
+					<div class="card-header">
+						<h5>Contextual Variations</h5>
+					</div>
+					<div class="card-body">
+						<span class="badge bg-primary">Primary</span>
+						<span class="badge bg-secondary">Secondary</span>
+						<span class="badge bg-success">Success</span>
+						<span class="badge bg-danger">Danger</span>
+						<span class="badge bg-warning">Warning</span>
+						<span class="badge bg-info">Info</span>
+						<span class="badge bg-light">Light</span>
+						<span class="badge bg-dark">Dark</span>
+					</div>
+				</div>
+				<div class="card">
+					<div class="card-header">
+						<h5>Pill Badges</h5>
+					</div>
+					<div class="card-body">
+						<span class="badge rounded-pill bg-primary">Primary</span>
+						<span class="badge rounded-pill bg-secondary">Secondary</span>
+						<span class="badge rounded-pill bg-success">Success</span>
+						<span class="badge rounded-pill bg-danger">Danger</span>
+						<span class="badge rounded-pill bg-warning">Warning</span>
+						<span class="badge rounded-pill bg-info">Info</span>
+						<span class="badge rounded-pill bg-light">Light</span>
+						<span class="badge rounded-pill bg-dark">Dark</span>
+					</div>
+				</div>
+				<div class="card">
+					<div class="card-header">
+						<h5>Links</h5>
+					</div>
+					<div class="card-body">
+						<a href="#!" class="badge bg-primary">Primary</a>
+						<a href="#!" class="badge bg-secondary">Secondary</a>
+						<a href="#!" class="badge bg-success">Success</a>
+						<a href="#!" class="badge bg-danger">Danger</a>
+						<a href="#!" class="badge bg-warning">Warning</a>
+						<a href="#!" class="badge bg-info">Info</a>
+						<a href="#!" class="badge bg-light">Light</a>
+						<a href="#!" class="badge bg-dark">Dark</a>
+					</div>
+				</div>
+				<div class="card">
+					<div class="card-header">
+						<h5>Light variant</h5>
+					</div>
+					<div class="card-body">
+						<span class="badge bg-light-primary">Primary</span>
+						<span class="badge bg-light-secondary">Secondary</span>
+						<span class="badge bg-light-success">Success</span>
+						<span class="badge bg-light-danger">Danger</span>
+						<span class="badge bg-light-warning">Warning</span>
+						<span class="badge bg-light-info">Info</span>
+						<span class="badge bg-light-light">Light</span>
+						<span class="badge bg-light-dark">Dark</span>
+					</div>
+				</div>
+			</div>
+			<!-- [ badge ] end -->
+		</div>
+		<!-- [ Main Content ] end -->
+	</div>
+</div>
+<!-- [ Main Content ] end -->
+{% load static %}
+    <!-- Warning Section start -->
+    <!-- Older IE warning message -->
+    <!--[if lt IE 11]>
+        <div class="ie-warning">
+            <h1>Warning!!</h1>
+            <p>You are using an outdated version of Internet Explorer, please upgrade
+               <br/>to any of the following web browsers to access this website.
+            </p>
+            <div class="iew-container">
+                <ul class="iew-download">
+                    <li>
+                        <a href="http://www.google.com/chrome/">
+                            <img src="{% static 'images/browser/chrome.png' %}" alt="Chrome">
+                            <div>Chrome</div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.mozilla.org/en-US/firefox/new/">
+                            <img src="{% static 'images/browser/firefox.png' %}" alt="Firefox">
+                            <div>Firefox</div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://www.opera.com">
+                            <img src="{% static 'images/browser/opera.png' %}" alt="Opera">
+                            <div>Opera</div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.apple.com/safari/">
+                            <img src="{% static 'images/browser/safari.png' %}" alt="Safari">
+                            <div>Safari</div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://windows.microsoft.com/en-us/internet-explorer/download-ie">
+                            <img src="{% static 'assets/images/browser/ie.png' %}" alt="">
+                            <div>IE (11 & above)</div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <p>Sorry for the inconvenience!</p>
+        </div>
+    <![endif]-->
+    <!-- Warning Section Ends -->
+    <!-- Required Js -->
+    <script src="{% static 'js/vendor-all.min.js' %}"></script>
+    <script src="{% static 'js/plugins/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/plugins/feather.min.js' %}"></script>
+    <script src="{% static 'js/pcoded.min.js' %}"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script> -->
+    <!-- <script src="assets/js/plugins/clipboard.min.js"></script> -->
+    <!-- <script src="assets/js/uikit.min.js"></script> -->
+
+<script>
+    $("body").append('<div class="fixed-button active"><a href="https://gumroad.com/dashboardkit" target="_blank" class="btn btn-md btn-success"><i class="material-icons-two-tone text-white">shopping_cart</i> Upgrade To Pro</a> </div>');
+</script>
+
+</body>
+
+</html>

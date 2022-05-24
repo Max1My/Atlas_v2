@@ -1,0 +1,92 @@
+{% extends 'mainapp/base.html' %}
+{% load static %}
+{% block content %}
+<div class="pc-container">
+    <div class="pcoded-content">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>{{name}}</h5>
+                    </div>
+                    <div class="card-body table-border-style">
+                        <div class="table-responsive">
+                            <nav aria-label="Page navigation example">
+                                <ul class="pagination justify-content-end">
+                                {% if page_obj.has_previous %}
+                                    <li class="page-item"><a class="page-link" href="?page=1">Begin</a></li>
+                                    <li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}" tabindex="-1">{{ page_obj.previous_page_number }}</a> </li>
+                                {% endif %}
+                                    <li class="page-item disabled">
+                                        <a class="page-link">{{ page_obj.number }}</a>
+                                    </li>
+                                {% if page_obj.has_next %}
+                                    <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}">{{ page_obj.next_page_number }}</a></li>
+                                    <li class="page-item"><a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+                                {% endif %}
+                                </ul>
+                            </nav>
+                            <table class="table table-hover">
+                                <thead>
+                                <tr>
+                                    <th>idobj</th>
+                                    <th>idai</th>
+                                    <th>datain</th>
+                                    <th>mode</th>
+                                    <th>aimax</th>
+                                    <th>aimean</th>
+                                    <th>aimin</th>
+                                    <th>statmin</th>
+                                    <th>statmax</th>
+                                    <th>mlmin</th>
+                                    <th>mlmax</th>
+                                    <th>err</th>
+                                    <th>sts</th>
+                                    <th>dataout</th>
+                                    <th>datacheck</th>
+                                    <th>cmnt</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for ai in page_obj %}
+                                <tr>
+                                    <td>{{ai.idobj}}</td>
+                                    <td>{{ai.idai}}</td>
+                                    <td>{{ai.datain}}</td>
+                                    <td>{{ai.mode}}</td>
+                                    <td>{{ai.aimax}}</td>
+                                    <td>{{ai.aimean}}</td>
+                                    <td>{{ai.aimin}}</td>
+                                    <td>{{ai.statmin}}</td>
+                                    <td>{{ai.statmax}}</td>
+                                    <td>{{ai.mlmin}}</td>
+                                    <td>{{ai.mlmax}}</td>
+                                    <td>{{ai.err}}</td>
+                                    <td>{{ai.sts}}</td>
+                                    <td>{{ai.dataout}}</td>
+                                    <td>{{ai.datacheck}}</td>
+                                    <td>{{ai.cmnt}}</td>
+                                </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                            <nav aria-label="Page navigation example">
+                                <ul class="pagination justify-content-end">
+                                {% if page_obj.has_previous %}
+                                    <li class="page-item"><a class="page-link" href="?page=1">Begin</a></li>
+                                    <li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}" tabindex="-1">{{ page_obj.previous_page_number }}</a> </li>
+                                    {% endif %}
+                                    <li class="page-item disabled">
+                                        <a class="page-link">{{ page_obj.number }}</a>
+                                    </li>
+                                {% if page_obj.has_next %}
+                                    <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}">{{ page_obj.next_page_number }}</a></li>
+                                    <li class="page-item"><a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+                                {% endif %}
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    {% endblock %}

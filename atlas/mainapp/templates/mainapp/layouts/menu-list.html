@@ -1,0 +1,75 @@
+{% load mainapp_extras %}
+<li class="pc-item pc-caption">
+	<label>Navigation</label>
+</li>
+<li class="pc-item">
+	<a href="{% url 'index' %}" class="pc-link "><span class="pc-micon"><i class="material-icons-two-tone">home</i></span><span class="pc-mtext">Главная</span></a>
+</li>
+<li class="pc-item pc-caption">
+	<label>Информация</label>
+	<span>Об объектах</span>
+</li>
+<li class="pc-item pc-hasmenu">
+		<a href="#!" class="pc-link "><span class="pc-micon"><i class="material-icons-two-tone">table_rows</i></span><span class="pc-mtext">Объекты</span><span class="pc-arrow"><i data-feather="chevron-right"></i></span></a>
+		<ul class="pc-submenu">
+			<li class="pc-item">
+				<a class="pc-link" href="{% url 'info' %}" target="_blank"><span class="pc-micon"><i class="material-icons-two-tone">bubble_chart</i></span><span class="pc-mtext">Общая информация</span></a> </li>
+		<li class="pc-item pc-hasmenu">
+			<a href="#!" class="pc-link">Детальная информация<span class="pc-arrow"><i data-feather="chevron-right"></i></span></a>
+			<ul class="pc-submenu">
+				{% if request.user.username == 'Atl' %}
+				<li class="pc-item pc-hasmenu">
+					<a href="#!" class="pc-link">Объект №1<span class="pc-arrow"><i data-feather="chevron-right"></i></span></a>
+					<ul class="pc-submenu">
+						{% for item in ai_1_value %}
+						<li class="pc-item"><a class="pc-link" href="{% url 'info_ai' item %}">Датчик №{{ item }} <span class="badge bg-danger">{% get_errors_1 item %}</span></a></li>
+						{% endfor %}
+					</ul>
+				</li>
+				<li class="pc-item pc-hasmenu">
+					<a href="#!" class="pc-link">Объект №2<span class="pc-arrow"><i data-feather="chevron-right"></i></span></a>
+					<ul class="pc-submenu">
+						{% for item in ai_2_value %}
+						<li class="pc-item"><a class="pc-link" href="{% url 'info_ai' item %}">Датчик №{{ item }}<span class="badge bg-danger">{% get_errors_2 item %}</span></a></li>
+						{% endfor %}
+					</ul>
+				</li>
+				{% endif %}
+				{% if request.user.username == 'Cm001' %}
+				{% for item in items %}
+				<li class="pc-item">
+					<a class="pc-link" href="{% url 'info_ai' item %}" target="_blank"><span class="pc-micon"><i class="material-icons-two-tone">my_location</i></span><span class="pc-mtext">Датчик №{{ item }}<span class="badge bg-danger">{% get_errors_1 item %}</span></span></a> </li>
+				{% endfor %}
+				{% endif %}
+				{% if request.user.username == 'Cm002' %}
+				{% for item in items %}
+				<li class="pc-item">
+					<a class="pc-link" href="{% url 'info_ai' item %}" target="_blank"><span class="pc-micon"><i class="material-icons-two-tone">my_location</i></span><span class="pc-mtext">Датчик №{{ item }}<span class="badge bg-danger">{% get_errors_2 item %}</span> </span> </a>
+				</li>
+				{% endfor %}
+				{% endif %}
+			</ul>
+		</li>
+		</ul>
+</li>
+<li class="pc-item pc-caption">
+	<label>Архивы</label>
+	<span>Все события</span>
+</li>
+{% if request.user.username == 'Atl' %}
+<li class="pc-item pc-hasmenu">
+	<a href="#!" class="pc-link"><span class="pc-micon"><i class="material-icons-two-tone">https</i></span><span class="pc-mtext">Архив событий</span><span class="pc-arrow"><i data-feather="chevron-right"></i></span></a>
+	<ul class="pc-submenu">
+		<li class="pc-item"><a class="pc-link" href="{% url 'archive' 1 %}" target="_blank">Объект №1</a></li>
+		<li class="pc-item"><a class="pc-link" href="{% url 'archive' 2 %}" target="_blank">Объект №2</a></li>
+	</ul>
+</li>
+{% endif %}
+{% if request.user.username == 'Cm001' %}
+<li class="pc-item">
+	<a href="{% url 'archive' 1 %}" class="pc-link "><span class="pc-micon"><i class="material-icons-two-tone">storefront</i></span><span class="pc-mtext">Архив событий</span></a></li>
+{% endif %}
+{% if request.user.username == 'Cm002' %}
+<li class="pc-item">
+	<a href="{% url 'archive' 2 %}" class="pc-link "><span class="pc-micon"><i class="material-icons-two-tone">storefront</i></span><span class="pc-mtext">Архив событий</span></a></li>
+{% endif %}
